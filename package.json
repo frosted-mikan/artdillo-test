@@ -1,0 +1,44 @@
+{
+  "name": "artdillo-mvp",
+  "title": "Artdillo",
+  "version": "1.0.0",
+  "description": "Artdillo",
+  "author": "Artdillo",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@marvr/storyblok-rich-text-vue-renderer": "^2.0.1",
+    "@nuxtjs/axios": "^5.12.5",
+    "@nuxtjs/pwa": "^3.3.5",
+    "animate.css": "^4.1.1",
+    "core-js": "^3.8.3",
+    "imask": "^6.0.7",
+    "moment": "^2.29.1",
+    "most-visible": "^1.5.0",
+    "node-sass": "^6.0.1",
+    "normalize-css": "^2.3.1",
+    "nuxt": "^2.14.12",
+    "nuxt-client-init-module": "^0.3.0",
+    "sass-loader": "^10",
+    "sass-resources-loader": "^2.2.4",
+    "storyblok-nuxt": "^2.0.1",
+    "vue-animate-onscroll": "^1.0.8",
+    "vue-formulate-extended": "^1.1.1",
+    "vue-markdown-plus": "^2.0.17",
+    "vue-mq": "^1.0.1",
+    "vue-slick-carousel": "^1.0.6",
+    "vue-tag-manager": "^0.1.2",
+    "vue-the-mask": "^0.11.1",
+    "vue2-animate": "^2.1.4",
+    "vue2-google-maps": "^0.10.7",
+    "vue2-transitions": "^0.3.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^4.1.2"
+  }
+}

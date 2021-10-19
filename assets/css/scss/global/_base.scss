@@ -1,0 +1,84 @@
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+html {
+  &.is-scroll-locked {
+    max-height: 100vh;
+    overflow-y: hidden;
+  }
+}
+
+body {
+  overflow: hidden;
+  position: relative;
+
+  // sass-lint:disable no-vendor-prefixes
+  // always show scrollbars on webkit browsers
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    height: rem-calc(6);
+    width: rem-calc(6);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba($black, .1);
+    border-radius: rem-calc(3);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba($black, .5);
+    border-radius: rem-calc(3);
+  }
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+}
+
+/*
+.u-content-container {
+  @include content-contain;
+}
+*/
+
+// vertical rhythm classes
+$sides: (top, bottom);
+@for $i from 0 to 8 {
+  // sass-lint:disable no-important
+  @each $side in $sides {
+    .m#{str-slice($side, 0, 1)}-#{$i} {
+      margin-#{$side}: #{$i}rem !important;
+    }
+
+    .p#{str-slice($side, 0, 1)}-#{$i} {
+      padding-#{$side}: #{$i}rem !important;
+    }
+  }
+}
+
+svg {
+  display: block;
+  transition: .3s ease;
+  transition-property: fill, stroke, opacity;
+}
+
+.skip-link {
+  color: $black;
+  margin-left: rem-calc(16);
+  opacity: 0;
+  position: absolute;
+  top: rem-calc(16);
+  z-index: 9999;
+
+  [data-whatinput='keyboard'] &:focus {
+    color: $black;
+    opacity: 1;
+  }
+}
+

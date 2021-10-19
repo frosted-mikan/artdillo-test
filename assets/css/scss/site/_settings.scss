@@ -1,0 +1,365 @@
+* {
+  font-family: $rfont;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+html {
+  &.is-scroll-locked {
+    max-height: 100vh;
+    overflow-y: hidden;
+  }
+}
+
+body {
+  overflow: hidden;
+  position: relative;
+
+  // sass-lint:disable no-vendor-prefixes
+  // always show scrollbars on webkit browsers
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    height: rem-calc(6);
+    width: rem-calc(6);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba($black, .1);
+    border-radius: rem-calc(3);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba($black, .5);
+    border-radius: rem-calc(3);
+  }
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+}
+
+
+
+
+
+
+/* General Globals ============================================================== */
+
+html {
+  scroll-behavior: auto;
+  font-size: 16px;
+}
+
+body {
+  color: $text-color;
+  font-family: $rfont;
+  font-size: rem-calc(18);
+}
+
+.sitewrap {
+  position: relative;
+}
+
+.hum { // hide until mobile
+  display: none !important;
+}
+
+@media screen and (max-width: $mobile1) {
+  .mh { // mobile hide
+    display: none !important;
+  }
+
+  .hum { // reveal on mobile
+    display: block !important;
+  }
+}
+
+
+
+
+
+
+
+/* Site Container Width ==================================================== */
+
+.sw {
+  width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+@media screen and (max-width: $desktop-1366) {
+  .sw {
+    width: 1200px;
+  }
+}
+
+@media screen and (max-width: $desktop-1024) {
+  .sw {
+    width: 920px;
+  }
+}
+
+@media screen and (max-width: $mobile1) {
+  .sw {
+    width: calc(100% - 40px);
+    margin: 0 auto;
+  }
+}
+
+
+
+
+
+
+/* Headings =========================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $hfont;
+  font-weight: 400;
+  color: $black;
+}
+
+h2 {
+  @include font(50, 55);
+  margin-bottom: rem-calc(28);
+
+  @media screen and (max-width: $mobile1) {
+    @include font(35, 40);
+  }
+}
+
+
+
+
+/* List Styles =========================================================== */
+
+.sitewrap {
+  ul,
+  ol {
+    margin-bottom: rem-calc(32);
+    margin-left: rem-calc(20);
+    margin-top: rem-calc(33);
+
+    li {
+      margin-bottom: rem-calc(10);
+      padding-left: rem-calc(15);
+      position: relative;
+    }
+
+    ul,
+    ol {
+      margin-left: rem-calc(2);
+      margin-top: rem-calc(10);
+    }
+  }
+
+  ul {
+    li {
+      &::before {
+        @extend .fas;
+        content: fa-content($fa-var-circle);
+        color: $primary-color;
+        font-size: rem-calc(7);
+        font-weight: 900;
+        left: 0;
+        position: absolute;
+        top: rem-calc(7);
+      }
+    }
+
+    ul {
+      li::before {
+        font-weight: 400;
+      }
+    }
+  }
+
+  ol {
+    counter-reset: item;
+
+    li {
+      counter-increment: item;
+
+      &::before {
+        color: $primary-color;
+        content: counter(item,) '.';
+        font-weight: bold;
+        left: rem-calc(-3);
+        position: absolute;
+        top: 0;
+      }
+    }
+
+    ol {
+      li::before {
+        content: counter(item, lower-alpha) '.';
+
+      }
+    }
+  }
+}
+
+
+
+
+/* Text Links =========================================================== */
+a {
+  transition: color .2s ease;
+}
+
+.sitewrap {
+  a {
+    color: $primary-color;
+
+    @include hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+
+
+
+
+
+/* Button Styles =========================================================== */
+
+.cta,
+.sitewrap .cta,
+input[type='submit'],
+input[type='button'] {
+  @include font(16, 18, 700);
+  font-family: $hfont;
+  background: transparent;
+  border-radius: rem-calc(5);
+  border: rem-calc(3) solid $primary-color;
+  color: $white;
+  cursor: pointer;
+  display: inline-block;
+  float: none;
+  letter-spacing: 0;
+  padding: rem-calc(12 28 10 28);
+  position: relative;
+  text-align: center;
+  text-decoration: none !important;
+  height: auto;
+  text-transform: uppercase;
+  min-width: rem-calc(160);
+  width: auto;
+  -webkit-appearance: none;
+  transition: .2s ease;
+  z-index: 1;
+  margin-top: rem-calc(24);
+
+  @include hover {
+    background-color: rgba($primary-color, .1);
+  }
+
+  &.cta--white {
+    border-color: $white;
+    color: $white;
+
+    @include hover {
+      background-color: rgba($white, .1);
+    }
+  }
+}
+
+
+
+
+
+
+
+/* Back to Top Button =========================================================== */
+
+.back-to-top {
+  position: fixed;
+  background: rgba($primary-color, .7);
+  cursor: pointer;
+  width: rem-calc(45);
+  height: rem-calc(40);
+  bottom: rem-calc(20);
+  right: rem-calc(20);
+  z-index: 999;
+  display: none;
+  backface-visibility: hidden;
+  transition: background-color .2s;
+  text-align: center;
+
+  @media screen and (max-width: $mobile1) {
+    display: none !important;
+  }
+
+  @include hover {
+    background-color: rgba($primary-color, .9);
+  }
+
+  &::before {
+    @extend .fas; content: fa-content($fa-var-chevron-up);
+    color: $white;
+    display: inline-block;
+    font-size: rem-calc(20);
+    line-height: 1;
+    left: 0;
+    top: 50%;
+    position: absolute;
+    width: 100%;
+    margin-top: rem-calc(-9);
+  }
+}
+
+
+
+
+
+/* Screen Reader Site Intro ============================================== */
+
+.screen-reader-text {
+  border: none;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+
+  &:focus {
+    background: $white;
+    border: 1px solid $black;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px rgba($black, .2);
+    clip: auto;
+    color: $black;
+    display: block;
+    font-size: 16px;
+    font-weight: normal;
+    height: auto;
+    left: 20px;
+    margin: 0;
+    overflow: visible;
+    padding: 8px 12px;
+    position: fixed;
+    text-decoration: underline;
+    top: 20px;
+    transition: .2s ease;
+    width: auto;
+    z-index: 1000000000;
+  }
+}
