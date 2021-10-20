@@ -238,14 +238,15 @@ a {
 
 /* Button Styles =========================================================== */
 
-.cta,
-.sitewrap .cta,
+.btn,
+.sitewrap .btn,
 input[type='submit'],
 input[type='button'] {
   @include font(16, 18, 700);
   font-family: $hfont;
-  background: transparent;
+  // background: transparent;
   border-radius: rem-calc(5);
+  background-color: $primary-color;
   border: rem-calc(3) solid $primary-color;
   color: $white;
   cursor: pointer;
@@ -266,10 +267,10 @@ input[type='button'] {
   margin-top: rem-calc(24);
 
   @include hover {
-    background-color: rgba($primary-color, .1);
+    background-color: rgba($primary-color, .8);
   }
 
-  &.cta--white {
+  &.btn--white {
     border-color: $white;
     color: $white;
 

@@ -16,13 +16,15 @@
 @import './global/variables';
 @import './global/mixins';
 @import './global/fonts';
-@import './site/settings';
+@import './global/typography';
+@import './global/base';
 
 // Import the site
 @import './site/form';
 @import './site/header';
 @import './site/footer';
 @import './site/classes';
+@import './site/settings';
 
 // Import Components
 

@@ -51,6 +51,10 @@ export default {
       path: '~/components/layout',
       global: true
     },
+    {
+      path: '~/components/forms',
+      global: true
+    },
   ],
 
   /*

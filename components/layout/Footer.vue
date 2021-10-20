@@ -29,4 +29,7 @@
 </script>
 
 <style lang="scss" scoped>
+footer {
+  margin-top: auto;
+}
 </style>
