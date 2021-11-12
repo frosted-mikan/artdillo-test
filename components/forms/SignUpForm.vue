@@ -6,10 +6,10 @@
       <hr />
 
       <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required />
+      <input type="text" v-model="user.email" placeholder="Enter Email" name="email" required />
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required />
+      <input type="password" v-model="user.password" placeholder="Enter Password" name="psw" required />
 
       <label for="psw-repeat"><b>Repeat Password</b></label>
       <input
@@ -35,7 +35,7 @@
       </p> -->
 
       <div class="clearfix">
-        <nuxt-link to="/listings" type="submit" class="btn">Sign Up</nuxt-link>
+        <nuxt-link to="/listings"  v-on:click.native="createUser" type="submit" class="btn">Sign Up</nuxt-link>
       </div>
     </form>
   </div>
@@ -43,12 +43,32 @@
 
 <script>
 export default {
+  data() {
+    return {
+      user: {
+        email: '',
+        password: ''
+      }
+    }
+  },
   props: {
     blok: {
       type: Object,
       required: true,
     },
   },
+  methods: {
+    async createUser() {
+      await this.$axios
+        .post('/api/user', this.user)
+        .then(response => {
+          console.log(response)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+  }
 };
 </script>
 
