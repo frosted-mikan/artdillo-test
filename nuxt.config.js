@@ -1,4 +1,5 @@
-
+import path from 'path'
+import fs from 'fs'
 export default {
   target: 'server',
 
@@ -103,6 +104,16 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+    }
+  },
+  /*
+  ** base for https server configuration
+  ** used for security and encryption purposes
+  */
+  server: {
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, 'C:\Users\Jzhan\Documents\Artdillo_MVP\artdillo-mvp\localhost.key')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'C:\Users\Jzhan\Documents\Artdillo_MVP\artdillo-mvp\localhost.crt')) 
     }
   }
 }
