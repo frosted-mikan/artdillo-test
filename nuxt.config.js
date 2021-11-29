@@ -132,8 +132,8 @@ export default {
   */
   server: {
     https: {
-      key: fs.readFileSync(path.resolve(__dirname, 'C:\Users\Jzhan\Documents\Artdillo_MVP\artdillo-mvp\localhost.key')),
-      cert: fs.readFileSync(path.resolve(__dirname, 'C:\Users\Jzhan\Documents\Artdillo_MVP\artdillo-mvp\localhost.crt')) 
+      key: fs.readFileSync(path.resolve(__dirname, 'C:../localhost.key')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'C:../localhost.crt'))
     }
   }
 }
