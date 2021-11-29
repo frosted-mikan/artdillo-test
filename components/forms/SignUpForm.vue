@@ -31,13 +31,15 @@
       
 
       <div class="clearfix">
-        <nuxt-link to="/listings"  v-on:click.native="createUser" type="submit" class="btn">Join</nuxt-link>
+        <nuxt-link to="/listings" type="submit" class="btn" @click.native="hash_password(email, psw)">Sign Up</nuxt-link>
       </div>
     </form>
   </div>
 </template>
 
 <script>
+import bcrypt from 'bcryptjs'
+import mongoose, { mongo } from 'mongoose'
 export default {
   data() {
     return {
@@ -54,21 +56,37 @@ export default {
     },
   },
   methods: {
-    async createUser() {
-      await this.$axios
-        .post('/api/user', this.user)
-        .then(response => {
-          console.log(response)
-        })
-        .catch(err => {
-          console.log(err)
-        })
+    password_hashing(email, psw){
+      const UserSchema = new mongoose.Schema({
+        username: email,
+        password: psw
+      })
+      //console.log("Password Hashing here")
+      UserSchema.pre("save", function (next) {
+      const user = this
+      if (this.isModified("password") || this.isNew) {
+        bcrypt.genSalt(10, function (saltError, salt) {
+        if (saltError) {
+          return next(saltError)
+        } else {
+          bcrypt.hash(user.password, salt, function(hashError, hash) {
+          if (hashError) {
+            return next(hashError)
+          }
+          user.password = hash
+          next()
+          })
+        }
+    })
+    } else {
+      return next()
+    }
+    })
+      module.exports = mongoose.model("User", UserSchema)
     }
   }
 };
 </script>
-
-
 <style lang="scss" scoped>
 @import "~/assets/css/scss/global/_variables.scss";
 
