@@ -1,6 +1,7 @@
 
 export default {
-  target: 'server',
+  ssr: !!(process.env.NODE_ENV === 'development' || process.env.STORYBLOK_PREVIEW != 'true'),
+  target: process.env.NODE_ENV === 'development' || process.env.STORYBLOK_PREVIEW != 'true' ? 'server' : 'static',
 
   /*
   ** Headers of the page
@@ -61,7 +62,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/components'
+    '~/plugins/components',
+    { src: '@/plugins/vue-animate-onscroll', mode: 'client' }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -85,14 +87,8 @@ export default {
     ],
   ],
 
-  serverMiddleware: {
-    '/api': '~/api'
-  },
-  
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    baseURL:'http://localhost:3000'
-  },
+  axios: {},
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
@@ -105,10 +101,28 @@ export default {
   ** Build configuration
   */
   build: {
-    /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
+    html: {
+      minify: {
+        collapseBooleanAttributes: true,
+        decodeEntities: true,
+        minifyCSS: false,
+        minifyJS: false,
+        processConditionalComments: true,
+        removeEmptyAttributes: true,
+        removeRedundantAttributes: true,
+        trimCustomFragments: true,
+        useShortDoctype: true
+      }
+    },
+    // /*
+    // ** You can extend webpack config here
+    // */
+    // extend (config, ctx) {
+    // }
+  },
+  generate: {
+    routes() {
+      return ['/']
     }
   }
 }

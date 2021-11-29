@@ -1,7 +1,7 @@
 <template>
   <div
     v-editable="blok"
-    class="px-6">
+    class="page">
     <component
       v-for="blok in blok.body"
       :key="blok._uid"
@@ -17,6 +17,18 @@ export default {
       type: Object,
       required: true
     }
+  },
+  mounted () {
+    scrollTo(0,0)
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.page {
+  min-height: calc(100vh - 150px);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+</style>
