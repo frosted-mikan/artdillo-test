@@ -71,7 +71,7 @@ body {
   display: none !important;
 }
 
-@media screen and (max-width: $mobile1) {
+@media screen and (max-width: $sm) {
   .mh { // mobile hide
     display: none !important;
   }
@@ -90,27 +90,16 @@ body {
 /* Site Container Width ==================================================== */
 
 .sw {
-  width: 1400px;
+  // width:  550px;
+  width: calc(100% - 50px);
   margin: 0 auto;
-  position: relative;
-}
 
-@media screen and (max-width: $desktop-1366) {
-  .sw {
-    width: 1200px;
+  @media (min-width: $lg) {
+    width: calc(100% - 100px);
   }
-}
 
-@media screen and (max-width: $desktop-1024) {
-  .sw {
-    width: 920px;
-  }
-}
-
-@media screen and (max-width: $mobile1) {
-  .sw {
-    width: calc(100% - 40px);
-    margin: 0 auto;
+  @media (min-width: 1600px) {
+    width: 1440px
   }
 }
 
@@ -136,7 +125,7 @@ h2 {
   @include font(50, 55);
   margin-bottom: rem-calc(28);
 
-  @media screen and (max-width: $mobile1) {
+  @media screen and (max-width: $sm) {
     @include font(35, 40);
   }
 }
@@ -302,7 +291,7 @@ input[type='button'] {
   transition: background-color .2s;
   text-align: center;
 
-  @media screen and (max-width: $mobile1) {
+  @media screen and (max-width: $sm) {
     display: none !important;
   }
 

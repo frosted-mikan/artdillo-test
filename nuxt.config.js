@@ -1,7 +1,8 @@
 import path from 'path'
 import fs from 'fs'
 export default {
-  target: 'server',
+  ssr: !!(process.env.NODE_ENV === 'development' || process.env.STORYBLOK_PREVIEW != 'true'),
+  target: process.env.NODE_ENV === 'development' || process.env.STORYBLOK_PREVIEW != 'true' ? 'server' : 'static',
 
   /*
   ** Headers of the page
@@ -62,7 +63,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/components'
+    '~/plugins/components',
+    { src: '@/plugins/vue-animate-onscroll', mode: 'client' }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -100,10 +102,28 @@ export default {
   ** Build configuration
   */
   build: {
-    /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
+    html: {
+      minify: {
+        collapseBooleanAttributes: true,
+        decodeEntities: true,
+        minifyCSS: false,
+        minifyJS: false,
+        processConditionalComments: true,
+        removeEmptyAttributes: true,
+        removeRedundantAttributes: true,
+        trimCustomFragments: true,
+        useShortDoctype: true
+      }
+    },
+    // /*
+    // ** You can extend webpack config here
+    // */
+    // extend (config, ctx) {
+    // }
+  },
+  generate: {
+    routes() {
+      return ['/']
     }
   },
   /*
