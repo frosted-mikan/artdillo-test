@@ -1,4 +1,5 @@
-
+import path from 'path'
+import fs from 'fs'
 export default {
   ssr: !!(process.env.NODE_ENV === 'development' || process.env.STORYBLOK_PREVIEW != 'true'),
   target: process.env.NODE_ENV === 'development' || process.env.STORYBLOK_PREVIEW != 'true' ? 'server' : 'static',
@@ -123,6 +124,16 @@ export default {
   generate: {
     routes() {
       return ['/']
+    }
+  },
+  /*
+  ** base for https server configuration
+  ** used for security and encryption purposes
+  */
+  server: {
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, 'C:\Users\Jzhan\Documents\Artdillo_MVP\artdillo-mvp\localhost.key')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'C:\Users\Jzhan\Documents\Artdillo_MVP\artdillo-mvp\localhost.crt')) 
     }
   }
 }
