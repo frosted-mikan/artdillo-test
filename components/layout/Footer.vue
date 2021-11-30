@@ -51,6 +51,8 @@ footer {
     width: calc(100% - 100px);
     margin: 0 auto;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
 
     @media (min-width: $sm) {
       flex-direction: row;
@@ -65,7 +67,6 @@ footer {
     }
 
     .contact {
-      margin-left: 100px;
       h1 {
         color: $white;
         font-family: $rfont;
@@ -94,7 +95,6 @@ footer {
     }
 
     .newsletter {
-      margin-left: 100px;
       width: 300px;
 
       h1 {
@@ -141,6 +141,7 @@ footer {
 
       .btn {
         background-color: #00ACBC;
+        border: 2px solid #00ACBC;
         font-family: $rfont;
         color: $white;
         text-transform: none;
@@ -150,7 +151,7 @@ footer {
         line-height: 125%;
         border-radius: 50px;
         width: 125px;
-        margin: 0;
+        margin-left: 140px;
         margin-top: 10px;
       }
     }
