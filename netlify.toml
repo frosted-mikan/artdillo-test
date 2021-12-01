@@ -1,0 +1,6 @@
+[context.branch-deploy]
+  command = 'yarn generate && cp assets/src/_redirects_dev dist/_redirects && rm dist/_headers'
+  environment = { API_ENV = 'stage', STORYBLOK_PREVIEW = 'true', STORYBLOK_VERSION = 'draft' }
+[context.dev]
+  command = 'yarn generate && cp assets/src/_redirects_dev dist/_redirects'
+  environment = { API_ENV = 'prod', STORYBLOK_PREVIEW = 'false' }

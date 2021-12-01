@@ -130,10 +130,10 @@ export default {
   ** base for https server configuration
   ** used for security and encryption purposes
   */
-  server: {
-    https: {
-      key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
-      cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'))
-    }
-  }
+  // server: {
+  //   https: {
+  //     key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
+  //     cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'))
+  //   }
+  // }
 }

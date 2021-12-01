@@ -23,7 +23,7 @@
     "lottie-vuejs": "^0.4.0",
     "mailgun-js": "^0.22.0",
     "moment": "^2.29.1",
-    "mongoose": "^6.0.13",
+    "mongoose": "^6.0.14",
     "most-visible": "^1.5.0",
     "node-sass": "^6.0.1",
     "normalize-css": "^2.3.1",
