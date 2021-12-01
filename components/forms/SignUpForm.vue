@@ -17,7 +17,7 @@
 
       <div>
         <!-- <label for="text"><b>Username</b></label> -->
-        <input type="text" placeholder="Create Username" name="username" required />
+        <input type="text" v-model="user.username" placeholder="Create Username" name="username" required />
         <!-- <label for="psw"><b>Password</b></label> -->
         <input type="password" v-model="user.password" placeholder="Create Password" name="psw" required />
         <!-- <label for="psw-repeat"><b>Repeat Password</b></label> -->
@@ -45,7 +45,8 @@ export default {
     return {
       user: {
         email: '',
-        password: ''
+        password: '',
+        username: ''
       }
     }
   },
@@ -56,6 +57,16 @@ export default {
     },
   },
   methods: {
+    async createUser() {
+      await this.$axios
+        .post('/api/user', this.user)
+        .then(response => {
+          console.log(response)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
     password_hashing(email, psw){
       const UserSchema = new mongoose.Schema({
         username: email,

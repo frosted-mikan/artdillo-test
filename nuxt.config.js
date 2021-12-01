@@ -88,8 +88,15 @@ export default {
     ],
   ],
 
+  serverMiddleware: {
+    '/api': '~/api'
+  },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    // baseURL:'http://localhost:3000'
+    baseURL: 'https://test--artdillo.netlify.app/'
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
