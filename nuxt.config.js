@@ -126,7 +126,7 @@ export default {
     exclude: [/.*?/], // Exclude all pages from generator by default
     fallback: false,
     routes() {
-      let routes = ['/', '/listings/']
+      let routes = ['/', '/listings/', '/about/']
       return routes
     }
   }
