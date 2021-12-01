@@ -122,18 +122,22 @@ export default {
     // }
   },
   generate: {
+    crawler: false, // Do not crawl the site for links
+    exclude: [/.*?/], // Exclude all pages from generator by default
+    fallback: false,
     routes() {
-      return ['/']
+      let routes = ['/', '/listings/']
+      return routes
     }
-  },
+  }
   /*
   ** base for https server configuration
   ** used for security and encryption purposes
   */
-  server: {
-    https: {
-      key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
-      cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'))
-    }
-  }
+  // server: {
+  //   https: {
+  //     key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
+  //     cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'))
+  //   }
+  // }
 }

@@ -40,19 +40,20 @@ export default {
   background-size: cover;
   background-position: bottom;
   background-repeat: no-repeat;
+  margin-bottom: 100px;
 
   @media (min-width: $md) {
     // height: 600px;
   }
 
   .sw {
-    padding-top: 75px;
+    padding-top: 95px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
     @media (min-width: $md) {
-      padding-top: 150px;
+      padding-top: 170px;
       flex-direction: row;
       align-items: flex-start;
       justify-content: space-between;

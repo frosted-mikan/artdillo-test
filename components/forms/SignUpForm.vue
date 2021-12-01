@@ -31,7 +31,7 @@
       
 
       <div class="clearfix">
-        <nuxt-link to="/listings" type="submit" class="btn" @click.native="hash_password(email, psw)">Sign Up</nuxt-link>
+        <nuxt-link to="/listings/" type="submit" class="btn" @click.native="hash_password(email, psw)">Sign Up</nuxt-link>
       </div>
     </form>
   </div>
@@ -52,7 +52,7 @@ export default {
   props: {
     blok: {
       type: Object,
-      required: true,
+      required: false,
     },
   },
   methods: {
