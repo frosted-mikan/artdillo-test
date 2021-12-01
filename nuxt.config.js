@@ -122,8 +122,8 @@ export default {
     // }
   },
   generate: {
-    crawler: false, // Do not crawl the site for links
-    exclude: [/.*?/], // Exclude all pages from generator by default
+    crawler: false,
+    exclude: [/.*?/],
     fallback: false,
     routes() {
       let routes = ['/', '/listings/', '/about/']
