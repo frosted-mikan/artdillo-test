@@ -122,10 +122,14 @@ export default {
     // }
   },
   generate: {
+    crawler: false, // Do not crawl the site for links
+    exclude: [/.*?/], // Exclude all pages from generator by default
+    fallback: false,
     routes() {
-      return ['/']
+      let routes = ['/', '/listings/']
+      return routes
     }
-  },
+  }
   /*
   ** base for https server configuration
   ** used for security and encryption purposes
